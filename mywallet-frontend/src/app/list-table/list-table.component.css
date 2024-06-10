@@ -1,0 +1,24 @@
+.table-container {
+    max-height: 400px; /* Ajuste conforme necessário */
+    overflow-y: auto;
+  }
+  
+  .table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+  }
+  
+  td{
+    text-align: center;
+  }
+  body {
+    overflow: hidden; /* Impede que a página principal tenha rolagem */
+  }
+  

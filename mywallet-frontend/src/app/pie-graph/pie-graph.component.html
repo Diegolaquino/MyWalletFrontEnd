@@ -1,0 +1,18 @@
+<!-- <div>
+  <h2>Intervalo de datas</h2>
+  <div>
+    <span><input id="startDate" type="date"></span>
+    <span><input id="endDate" type="date"></span>
+    <span><button class="btn btn-primary">ok</button></span>
+  </div>
+</div> -->
+<div>
+    <div>
+      <span><input id="startDate" type="date" [(ngModel)]="startDate"></span>
+      <span><input id="endDate" type="date" [(ngModel)]="endDate"></span>
+      <span><button class="btn btn-primary" (click)="updatePieChart()">OK</button></span>
+    </div>
+      <div>
+        <canvas id="pieChart"></canvas>
+      </div>
+  </div>  

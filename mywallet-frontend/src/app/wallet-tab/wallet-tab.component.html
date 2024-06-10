@@ -1,1 +1,19 @@
-<p>wallet-tab works!</p>
+<div class="container">
+    <ul class="nav nav-tabs" id="walletTabs" role="tablist">
+      <li class="nav-item" *ngFor="let wallet of wallets; let i = index">
+        <a class="nav-link" [class.active]="i === 0" id="tab-{{wallet.id}}" data-toggle="tab" href="#wallet-{{wallet.id}}" role="tab" [attr.aria-controls]="'wallet-' + wallet.id" [attr.aria-selected]="i === 0 ? 'true' : 'false'">
+          {{ wallet.name }}
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="walletTabContent">
+      <div class="tab-pane fade" *ngFor="let wallet of wallets; let i = index" [class.show]="i === 0" [class.active]="i === 0" id="wallet-{{wallet.id}}" role="tabpanel" [attr.aria-labelledby]="'tab-' + wallet.id">
+        <h4>Expenses for {{ wallet.name }} - {{ currentMonth }}/{{ currentYear }}</h4>
+        <ul>
+          <li *ngFor="let expense of currentMonthExpenses[wallet.id]">
+            {{ expense.name }}: {{ expense.value | currency }}
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>  

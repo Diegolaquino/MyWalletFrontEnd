@@ -1,0 +1,40 @@
+<div>
+    <div>
+      <div>
+        <span><input id="startDate" type="date" [(ngModel)]="startDate"></span>
+        <span><input id="endDate" type="date" [(ngModel)]="endDate"></span>
+        <span><button class="btn btn-primary" (click)="updateTable()">OK</button></span>
+      </div>
+      <div class="table-container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Carteira</th>
+              <th>Parcela</th>
+              <th>Qt Parcelas</th>
+              <th>Tags</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expense of expenses">
+              <td>{{ expense.expenseDate | date:'dd \'de\' MMMM \'de\' yyyy' }}</td>
+              <td>{{ expense.name }}</td>
+              <td>{{ expense.value }}</td>
+              <td>{{ expense.categoryName }}</td>
+              <td>{{ expense.walletName }}</td>
+              <td>{{ expense.installment }}</td>
+              <td>{{ expense.installmentsQuantity }}</td>
+              <td>{{ expense.tags }}</td>
+              <td>{{ expense.comments }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
