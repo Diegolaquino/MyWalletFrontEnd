@@ -70,7 +70,9 @@ export class PieGraphComponent implements OnInit {
         if (!acc[expense.categoryName]) {
           acc[expense.categoryName] = 0;
         }
-        acc[expense.categoryName] += expense.value;
+
+        if(expense.type == 1)
+          acc[expense.categoryName] += expense.value;
       }
       return acc;
     }, {});
