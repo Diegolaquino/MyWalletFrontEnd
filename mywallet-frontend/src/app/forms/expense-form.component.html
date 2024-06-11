@@ -1,0 +1,64 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+      <div class="form-group">
+        <label for="expenseDate">Data da Despesa</label>
+        <input type="date" id="expenseDate" class="form-control" [(ngModel)]="expense.expenseDate" name="expenseDate" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="value">Valor</label>
+        <input type="number" id="value" class="form-control" [(ngModel)]="expense.value" name="value" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="walletId">Carteira</label>
+        <select id="walletId" class="form-control" [(ngModel)]="expense.walletId" name="walletId">
+          <option *ngFor="let wallet of wallets" [value]="wallet.id">{{ wallet.name }}</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="categoryId">Categoria</label>
+        <select id="categoryId" class="form-control" [(ngModel)]="expense.categoryId" name="categoryId">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" id="tags" class="form-control" [(ngModel)]="expense.tags" name="tags">
+      </div>
+      
+      <div class="form-group">
+        <label for="installmentsQuantity">Quantidade de Parcelas</label>
+        <input type="number" id="installmentsQuantity" class="form-control" [(ngModel)]="expense.installmentsQuantity" name="installmentsQuantity" value="1">
+      </div>
+      
+      <div class="form-group">
+        <label for="paid">Pago</label>
+        <input type="checkbox" id="paid" class="form-check-input" [(ngModel)]="expense.paid" name="paid">
+      </div>
+      
+      <div class="form-group">
+        <label for="comments">Comentários</label>
+        <textarea id="comments" class="form-control" [(ngModel)]="expense.comments" name="comments"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="expense.name" name="name">
+      </div>
+      
+      <div class="form-group">
+        <label for="isFixed">Fixo</label>
+        <input type="checkbox" id="isFixed" class="form-check-input" [(ngModel)]="expense.isFixed" name="isFixed">
+      </div>
+      
+      <div class="form-group">
+        <label for="type">Tipo</label>
+        <input type="number" id="type" class="form-control" [(ngModel)]="expense.type" name="type" value="1" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!expenseForm.form.valid">Salvar</button>
+    </form>
+  </div>
+  

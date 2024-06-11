@@ -7,6 +7,7 @@ import { CardBalanceComponent } from './card-balance/card-balance.component';
 import { ListTableComponent } from './list-table/list-table.component';
 import { WalletTabComponent } from './wallet-tab/wallet-tab.component';
 import { NextMonthComponent } from './next-month/next-month.component';
+import { ExpenseFormComponent } from './forms/expense-form.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { NextMonthComponent } from './next-month/next-month.component';
     WalletTabComponent,
     CardBalanceComponent,
     ListTableComponent,
-    NextMonthComponent],
+    NextMonthComponent,
+    ExpenseFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

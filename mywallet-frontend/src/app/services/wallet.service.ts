@@ -15,7 +15,7 @@ export class WalletService {
     constructor(private http: HttpClient) { }
   
     getWallets(): Observable<Wallet[]> {
-        return this.http.get<{ value: Wallet[], messages: string }>(this.baseUrl)
+        return this.http.get<{ value: Wallet[], messages: string }>(this.baseUrl + `/wallets`)
           .pipe(
             map((response: { value: Wallet[], messages: string }) => response.value)
           );

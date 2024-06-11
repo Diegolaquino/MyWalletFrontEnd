@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Expense, Balance } from '../models/expense.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Expense, Balance, EntryExpense } from '../models/expense.model';
 import { environment } from '../../enviroment/enviroment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,37 @@ export class ExpenseService {
       .pipe(
         map((response: { value: Balance, messages: string }) => response.value)
       );
+  }
+
+  createExpense(expense: EntryExpense): Observable<Expense>{
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Acess-Control-Allow-Origin': '*'
+    });
+
+    console.log('Sending expense:', JSON.stringify(expense));
+
+    return this.http.post<{ value: Expense, messages: string }>(
+      this.baseUrl,
+      JSON.stringify({ expense }),
+      { headers }
+    ).pipe(
+      map((response: { value: Expense, messages: string }) => {
+        console.log('Received response:', response);
+        return response.value;
+      }),
+      catchError(error => {
+        console.error('Error occurred:', error);
+        if (error.error instanceof ErrorEvent) {
+          console.error('Client-side error:', error.error.message);
+        } else {
+          console.error(`Server-side error: ${error.status} - ${error.statusText}`);
+          console.error('Response body:', error.error);
+        }
+        return throwError(error);
+      })
+    );
   }
 }

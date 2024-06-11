@@ -1,3 +1,21 @@
+export interface EntryExpense {
+  expenseDate?: string;
+  value: number;
+  walletId?: string;
+  wallet?: Wallet | null;
+  walletName?: string;
+  categoryId: string;
+  category: Category | null;
+  tags?: string;
+  installmentsQuantity?: number | null;
+  paid: boolean;
+  comments?: string;
+  name?: string;
+  isFixed: boolean;
+  type: number;
+}
+
+
 export interface Expense {
     id: string;
     expenseDate?: string;
