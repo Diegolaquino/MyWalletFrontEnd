@@ -49,7 +49,7 @@ export class WalletTabComponent implements OnInit {
         const invoiceStartDate = new Date(this.currentYear, this.currentMonth - 1, shoppingDay);
         const invoiceEndDate = new Date(this.nextYear, this.nextMonth - 1, shoppingDay);
 
-        return expenseDate >= invoiceStartDate && expenseDate < invoiceEndDate;
+        return expenseDate >= invoiceStartDate && expenseDate < invoiceEndDate && expense.walletId === wallet.id;
       });
       this.currentMonthExpenses[wallet.id] = filteredExpenses;
     });
