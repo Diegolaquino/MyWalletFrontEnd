@@ -5,22 +5,21 @@ import { WalletService } from '../services/wallet.service';
 import { CategoryService } from '../services/category.service';
 import { FormsModule } from '@angular/forms';
 import { ExpenseService } from '../services/expense.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-expense-form',
   templateUrl: './expense-form.component.html',
   styleUrls: ['./expense-form.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, NavBarComponent]
 })
 export class ExpenseFormComponent implements OnInit {
   expense: EntryExpense = {
     expenseDate: '',
     value: 0,
     walletId: '',
-    wallet: null,
     categoryId: '',
-    category: null,
     tags: '',
     installmentsQuantity: 1,
     paid: false,

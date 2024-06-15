@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 import { ExpenseService } from '../services/expense.service';
 import { CommonModule } from '@angular/common';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'app-history-graph',
@@ -64,6 +65,9 @@ export class HistoryGraphComponent implements OnInit {
     const expenseData = labels.map(month => groupedExpenses[month].expense);
     const incomeData = labels.map(month => groupedExpenses[month].income);
     const othersData = labels.map(month => groupedExpenses[month].others);
+
+    // Chart.register(annotationPlugin);
+    // const currentMonth = new Date().getMonth();
 
     const historyChart = new Chart(ctx, {
       type: 'line',

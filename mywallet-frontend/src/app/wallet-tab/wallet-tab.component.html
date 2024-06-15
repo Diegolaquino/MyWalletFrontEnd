@@ -1,19 +1,44 @@
 <div class="container">
-    <ul class="nav nav-tabs" id="walletTabs" role="tablist">
+  <ul class="nav nav-tabs" id="walletTabs" role="tablist">
       <li class="nav-item" *ngFor="let wallet of wallets; let i = index">
-        <a class="nav-link" [class.active]="i === 0" id="tab-{{wallet.id}}" data-toggle="tab" href="#wallet-{{wallet.id}}" role="tab" [attr.aria-controls]="'wallet-' + wallet.id" [attr.aria-selected]="i === 0 ? 'true' : 'false'">
-          {{ wallet.name }}
-        </a>
+          <a class="nav-link" [class.active]="i === 0" id="tab-{{wallet.id}}" data-toggle="tab" href="#wallet-{{wallet.id}}" role="tab" [attr.aria-controls]="'wallet-' + wallet.id" [attr.aria-selected]="i === 0 ? 'true' : 'false'">
+              {{ wallet.name }}
+          </a>
       </li>
-    </ul>
-    <div class="tab-content" id="walletTabContent">
+  </ul>
+  <div class="tab-content wallet-container" id="walletTabContent">
       <div class="tab-pane fade" *ngFor="let wallet of wallets; let i = index" [class.show]="i === 0" [class.active]="i === 0" id="wallet-{{wallet.id}}" role="tabpanel" [attr.aria-labelledby]="'tab-' + wallet.id">
-        <h4>Expenses for {{ wallet.name }} - {{ currentMonth }}/{{ currentYear }}</h4>
-        <ul>
-          <li *ngFor="let expense of currentMonthExpenses[wallet.id]">
-            {{ expense.name }}: {{ expense.value | currency }}
-          </li>
-        </ul>
+          <h4>Expenses for {{ wallet.name }} - {{ currentMonth }}/{{ currentYear }}</h4>
+        
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Categoria</th>
+                <th>Carteira</th>
+                <th>Parcela</th>
+                <th>Qt Parcelas</th>
+                <th>Tags</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="currentMonthExpenses[wallet.id] && currentMonthExpenses[wallet.id].length > 0">
+              <tr *ngFor="let expense of currentMonthExpenses[wallet.id]">
+                <td>{{ expense.expenseDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ expense.name }}</td>
+                <td>{{ expense.value | currency:'BRL':'symbol':'1.2-2' }}</td>
+                <td>{{ expense.categoryName }}</td>
+                <td>{{ expense.walletName }}</td>
+                <td>{{ expense.installment }}</td>
+                <td>{{ expense.installmentsQuantity }}</td>
+                <td>{{ expense.tags }}</td>
+                <td>{{ expense.comments }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="!currentMonthExpenses[wallet.id] || currentMonthExpenses[wallet.id].length === 0">Não há gastos</p>
       </div>
-    </div>
-</div>  
+  </div>
+</div>
