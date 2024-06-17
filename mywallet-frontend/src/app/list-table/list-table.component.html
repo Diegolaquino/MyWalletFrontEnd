@@ -22,7 +22,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let expense of expenses">
-              <td>{{ expense.expenseDate | date:'dd \'de\' MMMM \'de\' yyyy' }}</td>
+              <td>{{ expense.expenseDate | date:'dd/MM/yyyy' }}</td>
               <td>{{ expense.name }}</td>
               <td>{{ expense.value }}</td>
               <td>{{ expense.categoryName }}</td>
