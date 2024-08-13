@@ -41,6 +41,7 @@ export interface Expense {
     name: string;
     shoppingDay?: number; 
     walletType: number; 
+    walletTotal: number;
     
   }
   

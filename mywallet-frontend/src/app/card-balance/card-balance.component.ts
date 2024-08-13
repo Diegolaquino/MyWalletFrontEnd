@@ -16,6 +16,12 @@ export class CardBalanceComponent {
   total?: number = 0;
   fixedEntries?: number = 0;
 
+  incomeTotalNextMonth?: number = 0;
+  expenseTotalNextMonth?: number = 0;
+  othersTotalNextMonth?: number = 0;
+  totalNextMonth?: number = 0;
+  fixedEntriesNextMonth?: number = 0;
+
   constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
@@ -29,6 +35,14 @@ export class CardBalanceComponent {
       this.othersTotal = balance.others;
       this.fixedEntries = balance.fixedEntries;
       this.total = balance.total;
+    });
+
+    this.expenseService.getBalance(month + 1, year).subscribe(balance => {
+      this.incomeTotalNextMonth = balance.income;
+      this.expenseTotalNextMonth = balance.expense;
+      this.othersTotalNextMonth = balance.others;
+      this.fixedEntriesNextMonth = balance.fixedEntries;
+      this.totalNextMonth = balance.total;
     });
   }
 }

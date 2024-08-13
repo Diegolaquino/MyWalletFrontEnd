@@ -1,12 +1,22 @@
 <div>
     <div>
       <div>
-        <span><input id="startDate" type="date" [(ngModel)]="startDate"></span>
-        <span><input id="endDate" type="date" [(ngModel)]="endDate"></span>
-        <span><button class="btn btn-primary" (click)="updateTable()">OK</button></span>
-      </div>
+        <span>
+          <select [(ngModel)]="selectedMonth">
+            <option *ngFor="let month of months; let i = index" [value]="i">{{ month }}</option>
+          </select>
+        </span>
+        <span>
+          <select [(ngModel)]="selectedYear">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </span>
+        <span>
+          <button class="btn btn-primary" (click)="updateTable()">OK</button>
+        </span>
+      </div>      
       <div class="table-container">
-        <table class="table table-striped">
+        <table id="list-table" class="table table-striped">
           <thead>
             <tr>
               <th>Data</th>

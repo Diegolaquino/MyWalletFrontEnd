@@ -1,12 +1,24 @@
 <div class="card card-balance">
     <div class="card-body">
       <div class="card-text">
+        <h4 class="card-title">Mês Atual</h4>
         <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotal }}</div>
         <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntries }}</div>
         <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotal }}</div>
         <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotal }}</div>
         <hr>
         <div style="font-weight: bold;">Total: R$ {{ total }}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-text">
+        <h4 class="card-title">Próximo Mês</h4>
+        <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotalNextMonth }}</div>
+        <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntriesNextMonth }}</div>
+        <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotalNextMonth }}</div>
+        <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotalNextMonth }}</div>
+        <hr>
+        <div style="font-weight: bold;">Total: R$ {{ totalNextMonth }}</div>
       </div>
     </div>
   </div>

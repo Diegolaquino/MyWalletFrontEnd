@@ -52,6 +52,7 @@ export class WalletTabComponent implements OnInit {
         return expenseDate >= invoiceStartDate && expenseDate < invoiceEndDate && expense.walletId === wallet.id;
       });
       this.currentMonthExpenses[wallet.id] = filteredExpenses;
+      //wallet.walletTotal = filteredExpenses.reduce((soma, valorAtual) => soma + valorAtual.value, 0);
     });
   }
 }
