@@ -14,6 +14,7 @@ import { Expense, Wallet } from '../models/expense.model';
 export class WalletTabComponent implements OnInit {
   wallets: Wallet[] = [];
   currentMonthExpenses: { [walletId: string]: Expense[] } = {};
+  currentTotalValue: { [walletId: string] : number } = {};
   currentMonth: number = 0;
   currentYear: number = 0;
   nextMonth: number = 0;
@@ -52,7 +53,7 @@ export class WalletTabComponent implements OnInit {
         return expenseDate >= invoiceStartDate && expenseDate < invoiceEndDate && expense.walletId === wallet.id;
       });
       this.currentMonthExpenses[wallet.id] = filteredExpenses;
-      //wallet.walletTotal = filteredExpenses.reduce((soma, valorAtual) => soma + valorAtual.value, 0);
+      this.currentTotalValue[wallet.id] = filteredExpenses.reduce((soma, valorAtual) => soma + valorAtual.value, 0);
     });
   }
 }
