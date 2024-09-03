@@ -16,6 +16,12 @@ export class CardBalanceComponent {
   total?: number = 0;
   fixedEntries?: number = 0;
 
+  incomeTotalLastMonth?: number = 0;
+  expenseTotalLastMonth?: number = 0;
+  othersTotalLastMonth?: number = 0;
+  totalLastMonth?: number = 0;
+  fixedEntriesLastMonth?: number = 0;
+
   incomeTotalNextMonth?: number = 0;
   expenseTotalNextMonth?: number = 0;
   othersTotalNextMonth?: number = 0;
@@ -35,6 +41,14 @@ export class CardBalanceComponent {
       this.othersTotal = balance.others;
       this.fixedEntries = balance.fixedEntries;
       this.total = balance.total;
+    });
+
+    this.expenseService.getBalance(month - 1, year).subscribe(balance => {
+      this.incomeTotalLastMonth = balance.income;
+      this.expenseTotalLastMonth = balance.expense;
+      this.othersTotalLastMonth = balance.others;
+      this.fixedEntriesLastMonth = balance.fixedEntries;
+      this.totalLastMonth = balance.total;
     });
 
     this.expenseService.getBalance(month + 1, year).subscribe(balance => {

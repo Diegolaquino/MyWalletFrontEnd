@@ -17,6 +17,7 @@ export interface Expense {
     id: string;
     expenseDate?: string;
     value: number;
+    totalValue: number;
     walletId?: string;
     wallet?: Wallet | null;
     walletName?: string;

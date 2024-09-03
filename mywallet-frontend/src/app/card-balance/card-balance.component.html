@@ -1,5 +1,16 @@
 <div class="card card-balance">
-    <div class="card-body">
+  <div class="card-body">
+    <div class="card-text">
+      <h4 class="card-title">Mês Passado</h4>
+      <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotalLastMonth }}</div>
+      <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntriesLastMonth }}</div>
+      <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotalLastMonth }}</div>
+      <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotalLastMonth }}</div>
+      <hr>
+      <div style="font-weight: bold;">Total: R$ {{ totalLastMonth }}</div>
+    </div>
+  </div>
+    <div class="card-body principal">
       <div class="card-text">
         <h4 class="card-title">Mês Atual</h4>
         <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotal }}</div>

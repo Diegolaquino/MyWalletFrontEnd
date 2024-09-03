@@ -6,7 +6,7 @@ import { HistoryGraphComponent } from './history-graph/history-graph.component';
 import { CardBalanceComponent } from './card-balance/card-balance.component';
 import { ListTableComponent } from './list-table/list-table.component';
 import { WalletTabComponent } from './wallet-tab/wallet-tab.component';
-import { NextMonthComponent } from './next-month/next-month.component';
+import { InstallmentPurchasesComponent } from './installment-purchases/installment-purchases.component';
 import { ExpenseFormComponent } from './forms/expense-form.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
@@ -18,7 +18,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     WalletTabComponent,
     CardBalanceComponent,
     ListTableComponent,
-    NextMonthComponent,
+    InstallmentPurchasesComponent,
     ExpenseFormComponent,
     NavBarComponent
   ],

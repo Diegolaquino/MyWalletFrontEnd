@@ -13,6 +13,7 @@ import annotationPlugin from 'chartjs-plugin-annotation';
   standalone: true,
   imports: [CommonModule]
 })
+
 export class HistoryGraphComponent implements OnInit {
   expenses: Expense[] = [];
 
