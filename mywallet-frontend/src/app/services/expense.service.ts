@@ -33,6 +33,25 @@ export class ExpenseService {
       );
   }
 
+  getExpensesWithInstallments(month: number, year: number): Observable<Expense[]> {
+    const now = new Date();
+
+    const currentMonth = now.getMonth() + 1; // Janeiro = 0, por isso +1
+    const currentYear = now.getFullYear();
+
+    const selectedMonth = month === 0 ? currentMonth : month;
+    const selectedYear = year === 0 ? currentYear : year;
+
+    const params = new HttpParams()
+      .set('month', selectedMonth.toString())
+      .set('year', selectedYear.toString());
+
+    return this.http.get<{ value: Expense[], messages: string }>(`${this.baseUrl}/withInstallments`, { params })
+      .pipe(
+        map(response => response.value)
+      );
+  }
+
   getBalance(month: number, year: number): Observable<Balance>{
 
     const today = new Date();

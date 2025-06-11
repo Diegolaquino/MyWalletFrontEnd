@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../models/expense.model';
-import Chart from 'chart.js/auto';
-import 'chartjs-adapter-date-fns';
 import { ExpenseService } from '../services/expense.service';
 import { CommonModule } from '@angular/common';
-import annotationPlugin from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'app-installment-purchases',
@@ -13,7 +10,24 @@ import annotationPlugin from 'chartjs-plugin-annotation';
   templateUrl: './installment-purchases.component.html',
   styleUrl: './installment-purchases.component.css'
 })
+export class InstallmentPurchasesComponent implements OnInit {
+  expenses: Expense[] = [];
 
-export class InstallmentPurchasesComponent {
+  constructor(private expenseService: ExpenseService) {}
 
+  ngOnInit(): void {
+    const now = new Date();
+    const currentMonth = now.getMonth() + 1;
+    const currentYear = now.getFullYear();
+
+    this.expenseService.getExpensesWithInstallments(currentMonth, currentYear)
+      .subscribe({
+        next: (data) => {
+          this.expenses = data;
+        },
+        error: (err) => {
+          console.error('Erro ao carregar despesas:', err);
+        }
+      });
+  }
 }
