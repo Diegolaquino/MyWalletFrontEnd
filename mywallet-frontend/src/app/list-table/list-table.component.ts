@@ -49,7 +49,36 @@ export class ListTableComponent implements OnInit {
     });
   }
 
-  updateTable(): void{
-    
+updateTable(): void {
+  if (this.selectedMonth == null || this.selectedYear == null) {
+    console.warn('⚠️ Mês ou ano não selecionado.');
+    return;
   }
+
+  // 🔹 Limpa a tabela imediatamente (antes da nova busca)
+  this.expenses = [];
+
+  // 🔹 Define o primeiro e último dia do mês selecionado
+  const start = new Date(this.selectedYear, this.selectedMonth, 1);
+  const end = new Date(this.selectedYear, this.selectedMonth + 1, 0);
+
+  // 🔹 Converte para formato yyyy-MM-dd
+  const startDate = start.toISOString().split('T')[0];
+  const endDate = end.toISOString().split('T')[0];
+
+  console.log(`📅 Atualizando dados de ${startDate} a ${endDate}...`);
+
+  // 🔹 Busca as despesas do novo intervalo
+  this.expenseService.getExpensesByInterval(startDate, endDate).subscribe({
+    next: (expenses) => {
+      this.expenses = expenses ?? []; // substitui completamente os dados
+      console.log('✅ Despesas carregadas:', this.expenses);
+    },
+    error: (err) => {
+      console.error('❌ Erro ao buscar despesas:', err);
+      this.expenses = []; // garante limpeza em caso de erro
+    }
+  });
+}
+
 }
