@@ -1,36 +1,97 @@
-<div class="card card-balance">
-  <div class="card-body">
-    <div class="card-text">
-      <h4 class="card-title">Mês Passado</h4>
-      <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotalLastMonth }}</div>
-      <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntriesLastMonth }}</div>
-      <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotalLastMonth }}</div>
-      <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotalLastMonth }}</div>
-      <hr>
-      <div style="font-weight: bold;">Total: R$ {{ totalLastMonth }}</div>
-    </div>
-  </div>
-    <div class="card-body principal">
-      <div class="card-text">
-        <h4 class="card-title">Mês Atual</h4>
-        <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotal }}</div>
-        <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntries }}</div>
-        <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotal }}</div>
-        <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotal }}</div>
-        <hr>
-        <div style="font-weight: bold;">Total: R$ {{ total }}</div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="card-text">
-        <h4 class="card-title">Próximo Mês</h4>
-        <div style="color: blue; font-weight: bold;">Entrada: R$ {{ incomeTotalNextMonth }}</div>
-        <div style="color: rgb(102, 81, 81); font-weight: bold;">Gastos Fixos: R$ {{ fixedEntriesNextMonth }}</div>
-        <div style="color: red; font-weight: bold;">Gastos: R$ {{ expenseTotalNextMonth }}</div>
-        <div style="color: rgb(179, 179, 6); font-weight: bold;">Outros: R$ {{ othersTotalNextMonth }}</div>
-        <hr>
-        <div style="font-weight: bold;">Total: R$ {{ totalNextMonth }}</div>
-      </div>
-    </div>
-  </div>
-  
+<div class="balance-cards">
+  <!-- Mês Passado -->
+  <section class="balance-card">
+    <header class="balance-card__header">
+      <span class="balance-card__title">Mês Passado</span>
+      <span class="balance-card__badge">Anterior</span>
+    </header>
+
+    <ul class="metrics">
+      <li class="metric metric--income">
+        <span class="metric__label">Entrada</span>
+        <span class="metric__value">{{ incomeTotalLastMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--fixed">
+        <span class="metric__label">Gastos Fixos</span>
+        <span class="metric__value">{{ fixedEntriesLastMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--expense">
+        <span class="metric__label">Gastos</span>
+        <span class="metric__value">{{ expenseTotalLastMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--others">
+        <span class="metric__label">Outros</span>
+        <span class="metric__value">{{ othersTotalLastMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+    </ul>
+
+    <footer class="balance-card__total" [class.is-negative]="(totalLastMonth ?? 0) < 0">
+      <span class="balance-card__total-label">Total</span>
+      <span class="balance-card__total-value">{{ totalLastMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+    </footer>
+  </section>
+
+  <!-- Mês Atual -->
+  <section class="balance-card is-current">
+    <header class="balance-card__header">
+      <span class="balance-card__title">Mês Atual</span>
+      <span class="balance-card__badge balance-card__badge--current">Atual</span>
+    </header>
+
+    <ul class="metrics">
+      <li class="metric metric--income">
+        <span class="metric__label">Entrada</span>
+        <span class="metric__value">{{ incomeTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--fixed">
+        <span class="metric__label">Gastos Fixos</span>
+        <span class="metric__value">{{ fixedEntries | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--expense">
+        <span class="metric__label">Gastos</span>
+        <span class="metric__value">{{ expenseTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--others">
+        <span class="metric__label">Outros</span>
+        <span class="metric__value">{{ othersTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+    </ul>
+
+    <footer class="balance-card__total" [class.is-negative]="(total ?? 0) < 0">
+      <span class="balance-card__total-label">Total</span>
+      <span class="balance-card__total-value">{{ total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+    </footer>
+  </section>
+
+  <!-- Próximo Mês -->
+  <section class="balance-card">
+    <header class="balance-card__header">
+      <span class="balance-card__title">Próximo Mês</span>
+      <span class="balance-card__badge">Previsto</span>
+    </header>
+
+    <ul class="metrics">
+      <li class="metric metric--income">
+        <span class="metric__label">Entrada</span>
+        <span class="metric__value">{{ incomeTotalNextMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--fixed">
+        <span class="metric__label">Gastos Fixos</span>
+        <span class="metric__value">{{ fixedEntriesNextMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--expense">
+        <span class="metric__label">Gastos</span>
+        <span class="metric__value">{{ expenseTotalNextMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+      <li class="metric metric--others">
+        <span class="metric__label">Outros</span>
+        <span class="metric__value">{{ othersTotalNextMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+      </li>
+    </ul>
+
+    <footer class="balance-card__total" [class.is-negative]="(totalNextMonth ?? 0) < 0">
+      <span class="balance-card__total-label">Total</span>
+      <span class="balance-card__total-value">{{ totalNextMonth | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</span>
+    </footer>
+  </section>
+</div>

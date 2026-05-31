@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 import { ExpenseService } from '../services/expense.service';
 import { Balance } from '../models/expense.model';
+
+registerLocaleData(localePt, 'pt-BR');
 
 @Component({
   selector: 'app-card-balance',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card-balance.component.html',
   styleUrl: './card-balance.component.css'
 })
