@@ -1,0 +1,18 @@
+<!-- floating-button.component.html -->
+<button class="floating-button" (click)="openModal()" title="Adicionar despesa">
+  +
+</button>
+
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="modal-overlay" (click)="onOverlayClick($event)">
+  <div class="modal-box">
+    <!-- Header -->
+    <div class="modal-header">
+      <h2>Adicionar Despesa</h2>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+
+    <!-- Conteúdo do Form -->
+    <app-expense-form (closeModal)="closeModal()"></app-expense-form>
+  </div>
+</div>

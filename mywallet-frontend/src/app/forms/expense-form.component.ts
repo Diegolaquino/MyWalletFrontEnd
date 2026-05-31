@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { EntryExpense, Wallet, Category } from '../models/expense.model';
 import { WalletService } from '../services/wallet.service';
@@ -14,6 +14,7 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
   standalone: true,
   imports: [CommonModule, FormsModule, NavBarComponent]
 })
+
 export class ExpenseFormComponent implements OnInit {
   expense: EntryExpense = {
     expenseDate: '',
@@ -31,6 +32,7 @@ export class ExpenseFormComponent implements OnInit {
 
   wallets: Wallet[] = [];
   categories: Category[] = [];
+  @Output() closeModal = new EventEmitter<void>();
 
   constructor(private walletService: WalletService, private categoryService: CategoryService, private expenseService: ExpenseService) {}
 
@@ -48,11 +50,10 @@ export class ExpenseFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // Lógica para salvar o expense
     console.log(this.expense);
-
     var response = this.expenseService.createExpense(this.expense);
-
-   
+    
+    // Fechar modal após salvar
+    this.closeModal.emit();
   }
 }

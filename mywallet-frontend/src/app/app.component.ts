@@ -7,8 +7,9 @@ import { CardBalanceComponent } from './card-balance/card-balance.component';
 import { ListTableComponent } from './list-table/list-table.component';
 import { WalletTabComponent } from './wallet-tab/wallet-tab.component';
 import { InstallmentPurchasesComponent } from './installment-purchases/installment-purchases.component';
-import { ExpenseFormComponent } from './forms/expense-form.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
+
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     CardBalanceComponent,
     ListTableComponent,
     InstallmentPurchasesComponent,
-    ExpenseFormComponent,
+    FloatingButtonComponent,
     NavBarComponent
   ],
   templateUrl: './app.component.html',

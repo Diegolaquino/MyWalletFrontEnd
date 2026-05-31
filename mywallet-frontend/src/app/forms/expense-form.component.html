@@ -2,7 +2,7 @@
   <app-nav-bar></app-nav-bar>
 </header>
 <div class="container">
-    <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+   <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
       <div class="form-group">
         <label for="expenseDate">Data da Despesa</label>
         <input type="date" id="expenseDate" class="form-control" [(ngModel)]="expense.expenseDate" name="expenseDate" required>
@@ -63,5 +63,9 @@
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!expenseForm.form.valid">Salvar</button>
     </form>
+     <div style="display: flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid #e5e7eb;">
+    <button type="button" class="btn btn-secondary" (click)="closeModal.emit()">Cancelar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!expenseForm.form.valid">Salvar</button>
+  </div>
   </div>
   
