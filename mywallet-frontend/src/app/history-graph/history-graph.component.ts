@@ -22,7 +22,7 @@ export class HistoryGraphComponent implements OnInit {
   ngOnInit(): void {
     const today = new Date();
     const start = new Date(today.getFullYear(), today.getMonth() - 9, today.getDate());
-    const end = new Date(today.getFullYear(), today.getMonth() + 3, today.getDate());
+    const end = new Date(today.getFullYear(), today.getMonth() + 5, today.getDate());
 
     const startDate = start.toISOString().split('T')[0];
     const endDate = end.toISOString().split('T')[0];
@@ -76,21 +76,21 @@ export class HistoryGraphComponent implements OnInit {
         labels: labels,
         datasets: [
           {
-            label: 'Expenses',
+            label: 'Gastos',
             data: expenseData,
             borderColor: 'rgba(255, 99, 132, 0.6)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             fill: false
           },
           {
-            label: 'Income',
+            label: 'Entrada',
             data: incomeData,
             borderColor: 'rgba(54, 162, 235, 0.6)',
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             fill: false
           },
           {
-            label: 'Others',
+            label: 'Terceiros',
             data: othersData,
             borderColor: 'rgba(255, 206, 86, 0.6)',
             backgroundColor: 'rgba(255, 206, 86, 0.2)',
